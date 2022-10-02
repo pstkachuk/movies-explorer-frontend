@@ -1,0 +1,5 @@
+.header {
+  display: flex;
+  max-width: calc(100% - 70px*2);
+  margin: 0 auto;
+}
