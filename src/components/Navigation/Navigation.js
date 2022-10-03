@@ -1,6 +1,5 @@
 import { Route, Link } from 'react-router-dom';
 import './Navigation.css';
-// import profileLogo from '../../images/profile-logo.svg';
 
 function Navigation() {
 
@@ -14,13 +13,7 @@ function Navigation() {
           <Link to="#" className="navigation__link">
             Сохранённые фильмы
           </Link>
-        </div>
-        {/* <Link to="#">
-          <button className="navigation__profile-button" aria-label="кнопка аккаунт">
-            <img src={ profileLogo } alt="логотип человечка" className="navigation__profile-button-logo" />
-            Аккаунт
-          </button>
-        </Link> */}
+        </div>        
       </Route>
     </nav>
     
