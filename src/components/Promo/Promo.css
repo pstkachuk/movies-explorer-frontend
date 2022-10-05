@@ -1,0 +1,28 @@
+.promo {
+  background-color: #073042;
+  position: relative;
+  min-height: 524px;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.promo__title {
+  margin: 0 auto;
+  margin-top: 184px;
+  margin-bottom: 224px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.1;
+  color: #fff;
+  max-width: 730px;
+}
+
+.promo__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -56%);
+}

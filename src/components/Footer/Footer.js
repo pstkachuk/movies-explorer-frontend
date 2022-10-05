@@ -10,10 +10,10 @@ function Footer() {
       <div className="footer__navigation-container">
         <p className="footer__copyright">&#169; 2022. Павел Ткачук</p>
         <nav className="footer__navigation">
-          <a href="https://practicum.yandex.ru" className="footer__link">
+          <a href="https://practicum.yandex.ru" className="footer__link" target={"_blank"}>
             Яндекс.Практикум
           </a>
-          <a href="https://github.com/pstkachuk" className="footer__link">
+          <a href="https://github.com/pstkachuk" className="footer__link" target={"_blank"}>
             Github
           </a>
         </nav>
