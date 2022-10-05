@@ -1,0 +1,71 @@
+.about-project{
+  max-width: calc(100% - 70px * 2);
+  margin: 0 auto;
+}
+
+.about-project__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 110px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #dadada;
+}
+
+.about-project__description {
+  margin-top: 70px;
+  margin-bottom: 110px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 26px 40px;
+}
+
+.about-project__subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.about-project__paragraph {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.about-project__graph {
+  margin-bottom: 110px;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  text-align: center;
+  grid-row-gap: 14px;
+}
+
+.about-project__graph-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  background-color: #303030;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.about-project__graph-title:first-of-type {
+  color: #303030;
+  background-color: #3DDC84;
+}
+
+.about-project__graph-subtitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+  margin: 0;
+}

@@ -1,8 +1,7 @@
 .navtab {
   background-color: #272727;
   padding-top: 25px;
-  padding-bottom: 25px;
-  
+  padding-bottom: 25px;  
 }
 
 .navtab__links {
@@ -18,4 +17,9 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 1.2;
+  transition: opacity .2s linear;
+}
+
+.navtab__link:hover {
+  opacity: .7;
 }
