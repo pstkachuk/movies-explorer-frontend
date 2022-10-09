@@ -1,6 +1,7 @@
 .navigation {
   display: flex;
   align-items: center;
+  margin-left: 61px;
 }
 
 .navigation__links-container {

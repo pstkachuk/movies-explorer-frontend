@@ -7,17 +7,15 @@ function Navigation() {
     <nav className="navigation">
       <Route>
         <div className="navigation__links-container">
-          <Link to="#" className="navigation__link navigation__link_active">
+          <Link to="/movies" className="navigation__link navigation__link_active">
             Фильмы
           </Link>
-          <Link to="#" className="navigation__link">
+          <Link to="/saved-movies" className="navigation__link">
             Сохранённые фильмы
           </Link>
         </div>        
       </Route>
-    </nav>
-    
-   
+    </nav>   
   )  
 }
 
