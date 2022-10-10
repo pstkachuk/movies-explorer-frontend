@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   width: 34px;
-  margin-top: 33px;
+  margin-top: 37px;
   margin-bottom: 42px;
 }
 
@@ -14,7 +14,7 @@
   gap: 25px;  
   max-width: 156px;
   margin: 0 auto;
-  margin-left: 491px;
+  grid-column: span 2;
 }
 
 .filter__checkbox {
@@ -30,7 +30,7 @@
   height: 14px;
   background-color: #ebebeb;
   border-radius: 20px;
-  left: 7px;
+  /* left: 7px; */
   top: -3px;
 }
 
@@ -40,14 +40,14 @@
   background-color: #f5f5f5;
   border-radius: 50%;
   position: absolute;
-  left: 10px;
+  left: 4px;
   z-index: 1;
   cursor: pointer;
   top: -1px;
 }
 
 .filter__checkbox:checked + .filter__switch {
-  left: 28px; 
+  left: 21px; 
 }
 
 .filter__checkbox:checked::after {

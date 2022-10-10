@@ -2,7 +2,7 @@
   text-align: center;
   border-bottom: 1px solid #424242;
   padding-top: 78px;
-  padding-bottom: 14px;
+  padding-bottom: 10px;
   box-sizing: border-box;
 }
 
@@ -40,6 +40,7 @@
   background-color: #4285F4;
   cursor: pointer;
   transition: opacity .2s linear;
+  align-self: center;
 }
 
 .search-form__submit-button:hover {
