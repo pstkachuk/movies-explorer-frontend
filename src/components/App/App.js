@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path="/movies">
           <Movies />
+        </Route>
+        <Route path="/saved-movies">
+          <SavedMovies />
         </Route>
       </Switch>
 

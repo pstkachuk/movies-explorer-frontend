@@ -1,0 +1,7 @@
+.saved-movies {
+  max-width: calc(100% - 70px * 2);
+  margin: 0 auto;
+  color: #fff;
+  min-height: 65vh;
+  position: relative;
+}

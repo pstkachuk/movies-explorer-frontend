@@ -1,4 +1,4 @@
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 function Navigation() {
@@ -7,12 +7,12 @@ function Navigation() {
     <nav className="navigation">
       <Route>
         <div className="navigation__links-container">
-          <Link to="/movies" className="navigation__link navigation__link_active">
+          <NavLink to="/movies" className="navigation__link" activeClassName="navigation__link_active">
             Фильмы
-          </Link>
-          <Link to="/saved-movies" className="navigation__link">
+          </NavLink>
+          <NavLink to="/saved-movies" className="navigation__link" activeClassName="navigation__link_active">
             Сохранённые фильмы
-          </Link>
+          </NavLink>
         </div>        
       </Route>
     </nav>   
