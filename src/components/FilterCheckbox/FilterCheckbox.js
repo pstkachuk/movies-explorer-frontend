@@ -13,10 +13,10 @@ function FilterCheckbox() {
       />      
       <span className="filter__switch"></span>
     </label>
-
-      <label for="filter" className="filter__label">
+      <label htmlFor="filter" className="filter__label">
         Короткометражки
       </label>
+
     </div>
   )
 }
