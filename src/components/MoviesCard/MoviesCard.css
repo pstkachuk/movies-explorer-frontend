@@ -1,9 +1,9 @@
 .movies-card {
   max-width: 360px;
+  min-height: 247px;
   display: flex;
   flex-direction: column;
   position: relative;
-  align-items: center;
   gap: 14px;  
 }
 
@@ -15,10 +15,11 @@
 
 .movies-card__description {
   display: flex;
-  max-width: calc(100% - 14px * 2);
+  width: calc(100% - 14px * 2);
   align-items: flex-start;
   justify-content: space-between;
   gap: 30px;
+  margin: 0 auto;
 }
 
 .movies-card__name {
