@@ -1,9 +1,8 @@
 .movies-cards-list {
-  padding-bottom: 80px;
+  padding-bottom: 80px; 
 }
 
 .movies-cards-list__cards {
-  min-height: 45vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 43px 30px;
