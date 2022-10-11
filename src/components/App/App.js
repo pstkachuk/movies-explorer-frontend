@@ -6,6 +6,7 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -24,9 +25,14 @@ function App() {
         <Route path="/saved-movies">
           <SavedMovies />
         </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
       </Switch>
+      <Route exact path={["/", "/movies", "/saved-movies"]}>
+        <Footer />
+      </Route>
 
-      <Footer />
     </div>
   );
 }
