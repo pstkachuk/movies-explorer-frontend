@@ -6,9 +6,9 @@ function NavTab() {
     <section className="navtab">
       <Route>
         <nav className="navtab__links">
-          <Link to="#" className="navtab__link">О проекте</Link>
-          <Link to="#" className="navtab__link">Технологии</Link>
-          <Link to="#" className="navtab__link">Студент</Link>          
+          <a href="#about-project" className="navtab__link">О проекте</a>
+          <a href="#tech" className="navtab__link">Технологии</a>
+          <a href="#about-me" className="navtab__link">Студент</a>          
         </nav>
       </Route>
     </section>
