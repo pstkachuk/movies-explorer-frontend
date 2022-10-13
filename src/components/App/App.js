@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route path="/signin">
+          <Login />
         </Route>
       </Switch>
       <Route exact path={["/", "/movies", "/saved-movies"]}>

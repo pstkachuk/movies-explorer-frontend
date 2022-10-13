@@ -27,7 +27,7 @@ function Register() {
             maxLength="30"
             pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
           />
-          <span className="register__error ">Что-то пошло не так...</span>
+          <span className="register__error register__error_hide">Что-то пошло не так...</span>
         </label>
 
         <label for="email" className="register__label">
@@ -40,7 +40,7 @@ function Register() {
             type="email"
             required
           />
-          <span className="register__error ">Что-то пошло не так...</span>
+          <span className="register__error register__error_hide">Что-то пошло не так...</span>
         </label>
 
         <label for="password" className="register__label">
