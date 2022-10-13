@@ -7,13 +7,16 @@ import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="page">
-      <Header loggedIn={ loggedIn } />
+      <Route exact path={["/", "/movies", "/saved-movies", "/profile"]}>
+        <Header loggedIn={ loggedIn } />
+      </Route>
 
       <Switch>
         <Route exact path="/">
@@ -27,6 +30,9 @@ function App() {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/signup">
+          <Register />
         </Route>
       </Switch>
       <Route exact path={["/", "/movies", "/saved-movies"]}>
