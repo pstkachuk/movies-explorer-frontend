@@ -1,0 +1,43 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-height: 100vh;
+  padding-top: 94px;
+}
+
+.not-found__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 6px;
+}
+
+.not-found__subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 184px;
+}
+
+.not-found__button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #4285F4;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: opcity .2s linear;
+}
+
+.not-found__button:hover {
+  opacity: .7;
+}

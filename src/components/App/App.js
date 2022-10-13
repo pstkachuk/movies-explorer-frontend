@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -9,9 +9,16 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const history = useHistory();
+
+  function goBack() {
+    history.goBack();
+  }
 
   return (
     <div className="page">
@@ -38,7 +45,11 @@ function App() {
         <Route path="/signin">
           <Login />
         </Route>
+        <Route path="*">
+          <PageNotFound goBack={goBack} />
+        </Route>
       </Switch>
+
       <Route exact path={["/", "/movies", "/saved-movies"]}>
         <Footer />
       </Route>
