@@ -1,6 +1,7 @@
 import './Register.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import Error from '../Error/Error';
 
 function Register() {
   return (
@@ -55,6 +56,8 @@ function Register() {
           />
           <span className="register__error">Что-то пошло не так...</span>
         </label>
+
+        <Error />
 
         <button
           className="register__submit-button "

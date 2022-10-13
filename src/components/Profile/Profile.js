@@ -1,4 +1,5 @@
 import './Profile.css';
+import Error from '../Error/Error';
 
 function Profile() {
 
@@ -13,7 +14,8 @@ function Profile() {
         <label className="profile__label">
           <span className="profile__text">E-mail</span>
           <input className="profile__input" placeholder="pochta@yandex.ru"></input>
-        </label>        
+        </label>
+        <Error />      
         <button className="profile__button">Редактировать</button>
         <button className="profile__button profile__button-logout">Выйти из аккаунта</button>
       </form>

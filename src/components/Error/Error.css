@@ -1,0 +1,19 @@
+.error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #FF004C;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 295px;
+}
+
+.error_profile {
+  top: 256px;
+}
+
+.error_show {
+  display: block;
+}

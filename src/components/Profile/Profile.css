@@ -20,6 +20,7 @@
   align-items: center;
   width: 410px;
   margin-top: 105px;
+  position: relative;
 }
 
 .profile__label {  

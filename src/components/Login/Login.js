@@ -1,6 +1,7 @@
 import './Login.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import Error from '../Error/Error';
 
 function Login() {
   return (
@@ -39,6 +40,8 @@ function Login() {
           />
           <span className="login__error login__error_hide">Что-то пошло не так...</span>
         </label>
+
+        <Error />
 
         <button
           className="login__submit-button "
