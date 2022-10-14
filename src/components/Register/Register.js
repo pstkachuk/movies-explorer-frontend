@@ -15,7 +15,7 @@ function Register() {
       </Link>
       <h1 className="register__title">Добро пожаловать!</h1>
       <form className="register__form" name="register-form">
-        <label for="name" className="register__label">
+        <label htmlFor="name" className="register__label">
           <span className="register__label-text">
             Имя
           </span>
@@ -31,7 +31,7 @@ function Register() {
           <span className="register__error register__error_hide">Что-то пошло не так...</span>
         </label>
 
-        <label for="email" className="register__label">
+        <label htmlFor="email" className="register__label">
           <span className="register__label-text">
             E-mail
           </span>
@@ -44,7 +44,7 @@ function Register() {
           <span className="register__error register__error_hide">Что-то пошло не так...</span>
         </label>
 
-        <label for="password" className="register__label">
+        <label htmlFor="password" className="register__label">
           <span className="register__label-text">
             Пароль
           </span>

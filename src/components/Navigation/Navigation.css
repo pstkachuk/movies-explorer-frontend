@@ -26,3 +26,24 @@
 .navigation__link_active {
   font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    margin-left: 0;
+  }
+
+  .navigation__links-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .navigation__link_active {
+    border-bottom: 2px solid;
+  }
+
+  .navigation__link {
+    font-weight: 500;
+    font-size: 18px;
+  }
+}

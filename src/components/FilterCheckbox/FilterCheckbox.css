@@ -40,7 +40,6 @@
   border-radius: 50%;
   position: absolute;
   left: 4px;
-  z-index: 1;
   cursor: pointer;
   top: -1px;
 }

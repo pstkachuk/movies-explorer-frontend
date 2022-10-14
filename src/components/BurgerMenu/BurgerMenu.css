@@ -1,0 +1,140 @@
+#burger-menu__toggle {
+  opacity: 0;
+}
+
+#burger-menu__toggle:checked ~ .burger-menu__button > span {
+  transform: rotate(45deg);
+  top: 21px;
+  right: -13px;
+  width: 22px;
+}
+#burger-menu__toggle:checked ~ .burger-menu__button > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#burger-menu__toggle:checked ~ .burger-menu__button > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#burger-menu__toggle:checked ~ .burger-menu__menu {
+  visibility: visible;
+  right: 0;
+} 
+
+.burger-menu {
+  position: relative; 
+  display: none;
+}
+
+.burger-menu__button {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -15px;
+  right: -30px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.burger-menu__button:hover {
+  opacity: .7;
+  transition: opacity .2s linear;
+}
+
+.burger-menu__button > span,
+.burger-menu__button > span::before,
+.burger-menu__button > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;  
+}
+
+.burger-menu__button > span::before {
+  content: '';
+  top: -9px;
+}
+.burger-menu__button > span::after {
+  content: '';
+  top: 9px;
+}
+
+.burger-menu__menu {
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 100vh;
+  margin: 0;
+  background-color: #202020;
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.5);  
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 90px;
+  padding-top: 159px;
+  box-sizing: border-box;
+}
+
+.burger-menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.burger-menu__link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity .2s linear;
+  margin-bottom: 29px;
+}
+
+.burger-menu__link:hover {
+  opacity: .7;
+}
+
+.burger-menu__link_active {
+  border-bottom: 2px solid;
+}
+
+.burger-menu__profile-button {
+  transition: opacity .2s linear;
+  background-color: transparent;
+  border: 2px solid rgba(170, 170, 170, .2);
+  border-radius: 50px;
+  color: #fff;
+  height: 32px;
+  width: 100px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.burger-menu__profile-button:hover {
+  opacity: .7;
+}
+
+.burger-menu__profile-button-logo {
+  margin-right: 7px;
+  width: 12px;
+  height: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+}
