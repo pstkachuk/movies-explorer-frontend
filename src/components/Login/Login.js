@@ -23,6 +23,7 @@ function Login() {
             className="login__input"
             name="email"
             type="email"
+            placeholder="pochta@yandex.ru"
             required
           />
           <span className="login__error login__error_hide">Что-то пошло не так...</span>

@@ -10,6 +10,7 @@ function SearchForm() {
           name="search-input"
           type="text"
           placeholder="Фильм"
+          required
         />
         <button className="search-form__submit-button" type="submit">Найти</button>
         <FilterCheckbox />
