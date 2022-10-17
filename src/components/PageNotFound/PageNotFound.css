@@ -41,3 +41,31 @@
 .not-found__button:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 768px) {
+  .not-found {
+    padding-top: 223px;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .not-found {
+    padding-top: 118px;
+    justify-content: normal;
+  }
+
+  .not-found__title {
+    font-size: 80px;
+    margin-top: 212px;
+    margin-bottom: 10px;
+  }
+
+  .not-found__subtitle {
+    font-size: 12px;
+    margin-bottom: 284px;
+  }
+
+  .not-found__button {
+    font-size: 12px;
+  }
+}

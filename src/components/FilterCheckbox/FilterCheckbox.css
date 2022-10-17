@@ -59,3 +59,14 @@
   line-height: 1.5;
   cursor: pointer;
 }
+
+@media screen and (max-width: 550px) {
+  .filter-container {
+    margin-top: 15px;
+  }
+
+  .filter__label {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}

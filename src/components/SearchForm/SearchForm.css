@@ -46,3 +46,22 @@
 .search-form__submit-button:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 550px) {
+  .search-form {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-bottom: 13px;
+  }
+
+  .search-form__input {
+    padding: 0;
+    padding-left: 16px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 12px;
+    line-height: 1.5;
+    height: 44px;
+  }
+
+}

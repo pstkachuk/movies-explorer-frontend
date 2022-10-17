@@ -131,3 +131,35 @@
 .login__link:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 768px) {
+  .login {
+    margin-top: 238px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .login {
+    max-width: 260px;
+    align-items: center;
+    margin-top: 56px;
+  }
+
+  .login__title {
+    margin-top: 50px;
+    margin-bottom: 78px;
+  }
+
+  .login__submit-button {
+    margin-top: 246px;
+    font-size: 12px;
+  }
+
+  .login__text {
+    font-size: 12px;
+  }
+
+  .login__link {
+    font-size: 12px;
+  }
+}

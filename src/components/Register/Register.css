@@ -131,3 +131,35 @@
 .register__link:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 768px) {
+  .register {
+    margin-top: 230px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register {
+    max-width: 260px;
+    align-items: center;
+    margin-top: 56px;
+  }
+
+  .register__title {
+    margin-top: 50px;
+    margin-bottom: 78px;
+  }
+
+  .register__submit-button {
+    margin-top: 158px;
+    font-size: 12px;
+  }
+
+  .register__text {
+    font-size: 12px;
+  }
+
+  .register__link {
+    font-size: 12px;
+  }
+}

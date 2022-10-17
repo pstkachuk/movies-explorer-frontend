@@ -65,3 +65,57 @@
   padding-top: 21px;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 1024px) {
+  .techs {
+    padding: 94px 50px ;
+  }
+
+  .techs__subtitle {
+    margin-top: 80px;
+    margin-bottom: 22px;    
+  }
+
+  .techs__list-item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+  }
+
+  .techs__paragraph {
+    margin-bottom: 83px;
+  }
+
+  .techs__list {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .techs {
+    padding: 70px 18px;
+    background-color: #202020;
+  }
+
+  .techs__title {
+    font-size: 18px;
+  }
+
+  .techs__subtitle {
+    font-size: 30px;
+    margin-top: 66px;
+  }
+
+  .techs__list {
+    margin: auto 53px;
+  }
+
+  .techs__list-item {
+    width: 84px;
+    height: 57px;
+  }
+
+  .techs__paragraph {
+    margin-bottom: 27px;
+  }
+}

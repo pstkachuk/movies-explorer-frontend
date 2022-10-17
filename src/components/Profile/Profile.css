@@ -87,3 +87,36 @@
   margin-bottom: 70px;
   color: #EE3465;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__title {
+    margin-top: 235px;
+  }
+
+  .profile__form {
+    margin-top: 77px;
+  }
+
+  .profile__button:first-of-type {
+    margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+ .profile__form {
+    width: 260px;
+    margin-top: 64px;
+ }
+
+ .profile__title {
+    margin-top: 68px;
+ }
+
+ .profile__button {
+    font-size: 12px;
+ }
+
+ .profile__button:first-of-type {
+    margin-top: 362px;
+ }
+}

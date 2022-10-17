@@ -4,7 +4,7 @@
 
 .movies-cards-list__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 43px 30px;
   box-sizing: border-box;
   padding-top: 80px;
@@ -29,4 +29,27 @@
 
 .movies-cards-list__more-movies-button:hover {
   opacity: .7;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies-cards-list__cards {
+    gap: 31px 30px;
+    padding-bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .movies-cards-list__cards {
+    padding-top: 50px;
+    gap: 35px;
+    padding-bottom: 58px;
+  }
+
+  .movies-cards-list {
+    padding-bottom: 110px;
+  }
+
+  .movies-cards-list__more-movies-button {
+    margin-bottom: -9px;
+  }
 }

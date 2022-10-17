@@ -93,6 +93,13 @@
   height: 14px;
 }
 
+@media screen and (max-width: 1024px) {
+  .header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header__navigation-container {
     display: none;
@@ -100,5 +107,28 @@
   
   .header__profile-link {
     display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header__button {
+    min-height: 26px;
+    width: 54px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__link {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__link-container {
+    gap: 14px;
   }
 }
