@@ -25,7 +25,11 @@ function BurgerMenu({ loggedIn }) {
               <Navigation />
             </div>
             <Link to="/profile" className="burger-menu__profile-link">
-              <button className="burger-menu__profile-button" aria-label="кнопка аккаунт">
+              <button 
+                className="burger-menu__profile-button" 
+                aria-label="кнопка аккаунт"
+                type="button"
+              >
                 <img src={ profileLogo } alt="логотип человечка" className="burger-menu__profile-button-logo" />
                 Аккаунт
               </button>

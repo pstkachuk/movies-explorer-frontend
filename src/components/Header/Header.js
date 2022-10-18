@@ -19,7 +19,11 @@ function Header({ loggedIn }) {
             Регистрация
           </Link>
           <Link to="/signin" >
-            <button className="header__button" aria-label="кнопка войти">
+            <button 
+              className="header__button" 
+              aria-label="кнопка войти"
+              type="button"
+            >
               Войти
             </button>
           </Link>
@@ -30,8 +34,16 @@ function Header({ loggedIn }) {
           </div>  
         }
         <Link to="/profile" className={ `header__profile-link ${ !loggedIn && "header__profile-link_hide" }` }>
-          <button className="header__profile-button" aria-label="кнопка аккаунт">
-            <img src={ profileLogo } alt="логотип человечка" className="header__profile-button-logo" />
+          <button 
+            className="header__profile-button" 
+            aria-label="кнопка аккаунт"
+            type="button"
+          >
+            <img 
+              src={ profileLogo } 
+              alt="логотип человечка" 
+              className="header__profile-button-logo" 
+            />
             Аккаунт
           </button>
         </Link>

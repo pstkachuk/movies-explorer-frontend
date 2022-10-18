@@ -24,9 +24,9 @@ function MoviesCard() {
         && (
           isSaved
           ?
-          <button className="movies-card__button movies-card__save-button_saved"></button>
+          <button className="movies-card__button movies-card__save-button_saved" type="button"></button>
           :
-          <button className="movies-card__button movies-card__save-button">Сохранить</button>
+          <button className="movies-card__button movies-card__save-button" type="button">Сохранить</button>
         )        
       }
 
@@ -34,7 +34,7 @@ function MoviesCard() {
         location.pathname === "/saved-movies"
         &&
         (
-          <button className="movies-card__button movies-card__delete-button"></button>
+          <button className="movies-card__button movies-card__delete-button" type="button"></button>
         )
       }
 

@@ -24,7 +24,7 @@ function MoviesCardList() {
       {
         location.pathname === "/movies"
         &&
-        <button className="movies-cards-list__more-movies-button">Ещё</button>
+        <button className="movies-cards-list__more-movies-button" type="button">Ещё</button>
       }
     </section>
   )

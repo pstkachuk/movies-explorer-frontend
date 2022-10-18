@@ -29,8 +29,8 @@ function Profile() {
           />
         </label>
         <Error />      
-        <button className="profile__button">Редактировать</button>
-        <button className="profile__button profile__button-logout">Выйти из аккаунта</button>
+        <button className="profile__button" type="submit">Редактировать</button>
+        <button className="profile__button profile__button-logout" type="button">Выйти из аккаунта</button>
       </form>
     </div>
   )

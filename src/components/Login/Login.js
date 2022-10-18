@@ -46,6 +46,7 @@ function Login() {
 
         <button
           className="login__submit-button "
+          aria-label="кнопка войти"
           type="submit"
           // disabled="true"
         >
