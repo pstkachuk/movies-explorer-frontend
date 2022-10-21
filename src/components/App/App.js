@@ -12,9 +12,10 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useHistory();
 
@@ -30,27 +31,44 @@ function App() {
       
       <main>
         <Switch>
+
           <Route exact path="/">
             <Main />
-          </Route>
-          <Route path="/movies">
-            <Movies />
-          </Route>
-          <Route path="/saved-movies">
-            <SavedMovies />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+          </Route>      
+
           <Route path="/signup">
             <Register />
           </Route>
+
           <Route path="/signin">
             <Login />
           </Route>
+
+          <ProtectedRoute 
+            exact
+            path="/movies"
+            component={Movies}
+            loggedIn={loggedIn}
+          />
+
+          <ProtectedRoute 
+            exact
+            path="/saved-movies"
+            component={SavedMovies}
+            loggedIn={loggedIn}
+          />
+
+          <ProtectedRoute 
+            exact
+            path="/profile"
+            component={Profile}
+            loggedIn={loggedIn}
+          />
+
           <Route path="*">
             <PageNotFound goBack={goBack} />
           </Route>
+
         </Switch>
       </main>
 
