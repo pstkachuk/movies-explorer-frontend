@@ -1,7 +1,7 @@
 import './Profile.css';
-import Error from '../Error/Error';
+import TooltipMessage from '../TooltipMessage/TooltipMessage';
 
-function Profile() {
+function Profile({ tooltip }) {
 
   return (
     <div className="profile">
@@ -28,7 +28,7 @@ function Profile() {
             required
           />
         </label>
-        <Error />      
+        <TooltipMessage />      
         <button className="profile__button" type="submit">Редактировать</button>
         <button className="profile__button profile__button-logout" type="button">Выйти из аккаунта</button>
       </form>

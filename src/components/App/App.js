@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
@@ -13,69 +13,106 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-
+  const [currentUser, setCurrentUser] = useState({});
+  const [tooltip, setTooltip] = useState({});
   const history = useHistory();
+
+  function checkAuth() {
+    mainApi.getUserInfo()
+    .then((data) => {
+      if (data) {
+        setLoggedIn(true);
+        history.push('/movies')
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    checkAuth();
+}, [])
 
   function goBack() {
     history.goBack();
   }
 
-  return (
+  function handleRegister({ name, email, password }) {
+    mainApi.createUser(name, email, password)
+    .then((res) => {
+      if (res) {
+        history.push('/signin')
+      }
+    })
+    .catch((err) => {
+      setTooltip({
+        isShow: true,
+        message: err
+      })
+    })
+  }
+
+  return (  
     <div className="page">
-      <Route exact path={["/", "/movies", "/saved-movies", "/profile"]}>
-        <Header loggedIn={ loggedIn } />
-      </Route>
-      
-      <main>
-        <Switch>
+      <CurrentUserContext.Provider value={currentUser}>
 
-          <Route exact path="/">
-            <Main />
-          </Route>      
+        <Route exact path={["/", "/movies", "/saved-movies", "/profile"]}>
+          <Header loggedIn={ loggedIn } />
+        </Route>
+        
+        <main>
+          <Switch>
 
-          <Route path="/signup">
-            <Register />
-          </Route>
+            <Route exact path="/">
+              <Main />
+            </Route>      
 
-          <Route path="/signin">
-            <Login />
-          </Route>
+            <Route path="/signup">
+              <Register handleRegister={handleRegister} tooltip={tooltip} />
+            </Route>
 
-          <ProtectedRoute 
-            exact
-            path="/movies"
-            component={Movies}
-            loggedIn={loggedIn}
-          />
+            <Route path="/signin">
+              <Login tooltip={tooltip} />
+            </Route>
 
-          <ProtectedRoute 
-            exact
-            path="/saved-movies"
-            component={SavedMovies}
-            loggedIn={loggedIn}
-          />
+            <ProtectedRoute 
+              exact
+              path="/movies"
+              component={Movies}
+              loggedIn={loggedIn}
+            />
 
-          <ProtectedRoute 
-            exact
-            path="/profile"
-            component={Profile}
-            loggedIn={loggedIn}
-          />
+            <ProtectedRoute 
+              exact
+              path="/saved-movies"
+              component={SavedMovies}
+              loggedIn={loggedIn}
+            />
 
-          <Route path="*">
-            <PageNotFound goBack={goBack} />
-          </Route>
+            <ProtectedRoute 
+              exact
+              path="/profile"
+              component={Profile}
+              loggedIn={loggedIn}
+            />
 
-        </Switch>
-      </main>
+            <Route path="*">
+              <PageNotFound goBack={goBack} />
+            </Route>
 
-      <Route exact path={["/", "/movies", "/saved-movies"]}>
-        <Footer />
-      </Route>
+          </Switch>
+        </main>
 
+        <Route exact path={["/", "/movies", "/saved-movies"]}>
+          <Footer />
+        </Route>
+
+      </CurrentUserContext.Provider>
     </div>
   );
 }

@@ -1,9 +1,22 @@
 import './Register.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
-import Error from '../Error/Error';
+import TooltipMessage from '../TooltipMessage/TooltipMessage';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import { useEffect } from 'react';
 
-function Register() {
+function Register({ handleRegister, tooltip }) {
+  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    handleRegister(values);
+  }
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
+
   return (
     <main className="register">
       <Link to="/">
@@ -14,21 +27,28 @@ function Register() {
         />
       </Link>
       <h1 className="register__title">Добро пожаловать!</h1>
-      <form className="register__form" name="register-form">
+      <form 
+        className="register__form" 
+        name="register-form"
+        noValidate
+        onSubmit={ handleSubmit }
+      >
         <label htmlFor="name" className="register__label">
           <span className="register__label-text">
             Имя
           </span>
           <input
-            className="register__input"
+            className={`register__input ${errors.name && "register__input_error"}`}
             name="name"
             type="text"
             required
             minLength="2"
             maxLength="30"
             pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
+            onChange={ handleChange }
+            value={ values.name || '' }
           />
-          <span className="register__error register__error_hide">Что-то пошло не так...</span>
+          <span className="register__error">{errors.name || ''}</span>
         </label>
 
         <label htmlFor="email" className="register__label">
@@ -36,12 +56,14 @@ function Register() {
             E-mail
           </span>
           <input
-            className="register__input"
+            className={`register__input ${errors.email && "register__input_error"}`}
             name="email"
             type="email"
             required
+            onChange={handleChange}
+            value={values.email || ''}
           />
-          <span className="register__error register__error_hide">Что-то пошло не так...</span>
+          <span className="register__error">{errors.email || ''}</span>
         </label>
 
         <label htmlFor="password" className="register__label">
@@ -49,20 +71,22 @@ function Register() {
             Пароль
           </span>
           <input
-            className="register__input register__input_error"
+            className={`register__input ${errors.password && "register__input_error"}`}
+            onChange={handleChange}
             name="password"
             type="password"
             required
+            value={values.password || ''}
           />
-          <span className="register__error">Что-то пошло не так...</span>
+          <span className="register__error">{errors.password || ''}</span>
         </label>
 
-        <Error />
+        <TooltipMessage tooltip={ tooltip } />
 
         <button
-          className="register__submit-button "
+          className={ `register__submit-button ${!isValid && "register__submit-button_disabled"}` }
           type="submit"
-          // disabled="true"
+          disabled={!isValid}
         >
           Зарегистрироваться
         </button>

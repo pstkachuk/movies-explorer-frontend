@@ -1,9 +1,9 @@
 import './Login.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
-import Error from '../Error/Error';
+import TooltipMessage from '../TooltipMessage/TooltipMessage';
 
-function Login() {
+function Login({ tooltip }) {
   return (
     <main className="login">
       <Link to="/">
@@ -42,7 +42,7 @@ function Login() {
           <span className="login__error login__error_hide">Что-то пошло не так...</span>
         </label>
 
-        <Error />
+        <TooltipMessage tooltip={tooltip} />
 
         <button
           className="login__submit-button "
