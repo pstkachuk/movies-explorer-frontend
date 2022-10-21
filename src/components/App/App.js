@@ -10,6 +10,8 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
