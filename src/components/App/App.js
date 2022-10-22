@@ -30,7 +30,7 @@ function App() {
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.message);
     })
   }
 
@@ -45,14 +45,32 @@ function App() {
   function handleRegister({ name, email, password }) {
     mainApi.createUser(name, email, password)
     .then((res) => {
-      if (res) {
-        history.push('/signin')
+      if (res._id) {
+        handleLogin({ email, password })
       }
     })
     .catch((err) => {
+      console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err
+        message: err.message
+      })
+    })
+  }
+
+  function handleLogin({ email, password }) {
+    mainApi.login(email, password)
+    .then((res) => {
+      if (res) {
+        setLoggedIn(true);
+        history.push('/movies')
+      }
+    })
+    .catch((err) => {
+      console.log(err.message);
+      setTooltip({
+        isShow: true,
+        message: err.message
       })
     })
   }
@@ -73,11 +91,11 @@ function App() {
             </Route>      
 
             <Route path="/signup">
-              <Register handleRegister={handleRegister} tooltip={tooltip} />
+              <Register onRegister={handleRegister} tooltip={tooltip} />
             </Route>
 
             <Route path="/signin">
-              <Login tooltip={tooltip} />
+              <Login onLogin={handleLogin} tooltip={tooltip} />
             </Route>
 
             <ProtectedRoute 

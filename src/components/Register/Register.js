@@ -5,12 +5,12 @@ import TooltipMessage from '../TooltipMessage/TooltipMessage';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { useEffect } from 'react';
 
-function Register({ handleRegister, tooltip }) {
+function Register({ onRegister, tooltip }) {
   const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleRegister(values);
+    onRegister(values);
   }
 
   useEffect(() => {

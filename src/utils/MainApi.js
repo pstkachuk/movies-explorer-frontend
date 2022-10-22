@@ -4,11 +4,11 @@ export class MainApi {
     this._headers = options.headers;
   }
 
-  _requestIsOk(res) {
+  async _requestIsOk(res) {
     if (res.ok) {
-      return res.json();
+      return  res.json();
     }
-    return Promise.reject(`Ошибка - ${res.status}`);
+    return Promise.reject(await res.json());
   }
 
   //регитсрация пользователя
