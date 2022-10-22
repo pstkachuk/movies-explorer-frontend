@@ -26,6 +26,7 @@ function App() {
     .then((data) => {
       if (data) {
         setLoggedIn(true);
+        setCurrentUser(data);
         history.push('/movies')
       }
     })
@@ -63,8 +64,29 @@ function App() {
     .then((res) => {
       if (res) {
         setLoggedIn(true);
+        setCurrentUser(res);
         history.push('/movies')
       }
+    })
+    .catch((err) => {
+      console.log(err.message);
+      setTooltip({
+        isShow: true,
+        message: err.message
+      })
+    })
+  }
+
+  function handleSignOut() {
+    mainApi.logout();
+    setLoggedIn(false);
+    history.push('/');
+  }
+
+  function handleUpdateUser({ name, email }) {
+    mainApi.setUserInfo(name, email)
+    .then((data) => {
+      setCurrentUser(data)
     })
     .catch((err) => {
       console.log(err.message);
@@ -117,6 +139,9 @@ function App() {
               path="/profile"
               component={Profile}
               loggedIn={loggedIn}
+              tooltip={tooltip}
+              onUpdateUser={handleUpdateUser}
+              onSignOut={handleSignOut}
             />
 
             <Route path="*">
