@@ -97,7 +97,7 @@
 
 .profile__submit-button_disabled {
   cursor: default;
-  color: #C2C2C2;
+  color: #666565;
 }
 
 .profile__submit-button_disabled:hover {

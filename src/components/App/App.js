@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     checkAuth();
-}, [])
+  }, [])
 
   function goBack() {
     history.goBack();
@@ -87,6 +87,10 @@ function App() {
     mainApi.setUserInfo(name, email)
     .then((data) => {
       setCurrentUser(data)
+      setTooltip({
+        isShow: true,
+        message: "Данные обновлены"
+      })
     })
     .catch((err) => {
       console.log(err.message);

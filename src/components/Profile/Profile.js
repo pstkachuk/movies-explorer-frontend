@@ -12,12 +12,15 @@ function Profile({ onUpdateUser, tooltip, onSignOut }) {
     evt.preventDefault();
     onUpdateUser(values);
   }
-
+  
   useEffect(() => {
     if (currentUser) {
       resetForm(currentUser);
     }
   }, [currentUser, resetForm])
+  
+  //введенные данные должны отличаться от первоначальных, иначе форма не активна
+  const dataIsOther = !(currentUser.name === values.name && currentUser.email === values.email);
 
   return (
     <div className="profile">
@@ -60,9 +63,9 @@ function Profile({ onUpdateUser, tooltip, onSignOut }) {
         <TooltipMessage tooltip={tooltip} />      
 
         <button
-          className={ `profile__button ${!isValid && "profile__submit-button_disabled"}` } 
+          className={ `profile__button ${(!isValid || !dataIsOther) && "profile__submit-button_disabled"}` } 
           type="submit"
-          disabled={!isValid}
+          disabled={!dataIsOther}
         >
           Редактировать
         </button>
