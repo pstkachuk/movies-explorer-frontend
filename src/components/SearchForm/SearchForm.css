@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 70px;
   column-gap: 10px;
+  position: relative;
 }
 
 .search-form__input {
@@ -24,6 +25,17 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.3;
+}
+
+.search-form__error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #FF004C;
+  text-align: center;
+  position: absolute;
+  top: 55px;
 }
 
 .search-form__submit-button {

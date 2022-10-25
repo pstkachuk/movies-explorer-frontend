@@ -14,11 +14,13 @@ import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import Preloader from '../Preloader/Preloader';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState({name: 'test', email: 'ww@ww.ru', _id: "00001"});
   const [tooltip, setTooltip] = useState({});
+  const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
   const history = useHistory();
 
   function checkAuth() {
@@ -129,6 +131,10 @@ function App() {
               path="/movies"
               component={Movies}
               loggedIn={loggedIn}
+              setIsPreloaderOpen={setIsPreloaderOpen}
+              isPreloaderOpen={isPreloaderOpen}
+              setTooltip={setTooltip}
+              tooltip={tooltip}
             />
 
             <ProtectedRoute 

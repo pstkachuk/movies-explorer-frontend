@@ -8,18 +8,7 @@ function MoviesCardList() {
   return (
     <section className="movies-cards-list">
       <div className="movies-cards-list__cards">
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        {/* <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard /> */}
+       
       </div>
       {
         location.pathname === "/movies"
