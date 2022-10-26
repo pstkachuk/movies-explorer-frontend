@@ -21,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({name: 'test', email: 'ww@ww.ru', _id: "00001"});
   const [tooltip, setTooltip] = useState({});
   const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
+  const [savedUserMovies, setSavedUserMovies] = useState([]);
   const history = useHistory();
 
   function checkAuth() {
@@ -46,6 +47,7 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
+    setIsPreloaderOpen(true);
     mainApi.createUser(name, email, password)
     .then((res) => {
       if (res._id) {
@@ -58,6 +60,9 @@ function App() {
         isShow: true,
         message: err.message
       })
+    })
+    .finally(() => {
+      setIsPreloaderOpen(false);
     })
   }
 
@@ -86,6 +91,7 @@ function App() {
   }
 
   function handleUpdateUser({ name, email }) {
+    setIsPreloaderOpen(true);
     mainApi.setUserInfo(name, email)
     .then((data) => {
       setCurrentUser(data)
@@ -101,6 +107,9 @@ function App() {
         message: err.message
       })
     })
+    .finally(() => {
+      setIsPreloaderOpen(false);
+    })
   }
 
   return (  
@@ -111,7 +120,7 @@ function App() {
           <Header loggedIn={ loggedIn } />
         </Route>
         
-        <main>
+        <main className="main-container">
           <Switch>
 
             <Route exact path="/">
@@ -119,11 +128,19 @@ function App() {
             </Route>      
 
             <Route path="/signup">
-              <Register onRegister={handleRegister} tooltip={tooltip} />
+              <Register 
+                onRegister={handleRegister} 
+                tooltip={tooltip} 
+                isPreloaderOpen={isPreloaderOpen}
+              />
             </Route>
 
             <Route path="/signin">
-              <Login onLogin={handleLogin} tooltip={tooltip} />
+              <Login 
+                onLogin={handleLogin} 
+                tooltip={tooltip} 
+                isPreloaderOpen={isPreloaderOpen}  
+              />
             </Route>
 
             <ProtectedRoute 
@@ -152,6 +169,7 @@ function App() {
               tooltip={tooltip}
               onUpdateUser={handleUpdateUser}
               onSignOut={handleSignOut}
+              isPreloaderOpen={isPreloaderOpen}
             />
 
             <Route path="*">

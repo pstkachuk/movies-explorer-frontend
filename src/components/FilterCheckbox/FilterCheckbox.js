@@ -11,7 +11,6 @@ function FilterCheckbox({ handleFilterChecked, isShortMoviesChecked }) {
         id="filter"
         onChange={handleFilterChecked}
         checked={isShortMoviesChecked}
-        // checked
       />      
       <span className="filter__switch"></span>
     </label>

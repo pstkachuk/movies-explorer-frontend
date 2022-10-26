@@ -90,22 +90,29 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
 
 
   return (
-    <div className="movies">
-      <SearchForm 
-        handleSearch={handleSearch} 
-        handleFilterChecked={handleFilterChecked}
-        isShortMoviesChecked={isShortMoviesChecked}
-      />
-      {!isMoviesFound && (
-        <MoviesCardList 
-          filteredMovies={filteredMovies}
+    <>
+    {
+    isPreloaderOpen
+    ?
+    <Preloader />
+    :
+    (
+      <div className="movies">
+        <SearchForm 
+          handleSearch={handleSearch} 
+          handleFilterChecked={handleFilterChecked}
+          isShortMoviesChecked={isShortMoviesChecked}
         />
-      )}
-      { isPreloaderOpen &&
-        <Preloader />
-       }
-       <TooltipMessage tooltip={tooltip}/>
-    </div>
+        {!isMoviesFound && (
+          <MoviesCardList 
+            filteredMovies={filteredMovies}
+          />
+        )}      
+        <TooltipMessage tooltip={tooltip}/>
+      </div>
+    )
+    }
+    </>
   )
 }
 

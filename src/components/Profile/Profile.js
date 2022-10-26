@@ -3,8 +3,10 @@ import TooltipMessage from '../TooltipMessage/TooltipMessage';
 import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import Preloader from '../Preloader/Preloader';
 
-function Profile({ onUpdateUser, tooltip, onSignOut }) {
+
+function Profile({ onUpdateUser, tooltip, onSignOut, isPreloaderOpen }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
@@ -22,9 +24,16 @@ function Profile({ onUpdateUser, tooltip, onSignOut }) {
   //введенные данные должны отличаться от первоначальных, иначе форма не активна
   const dataIsOther = !(currentUser.name === values.name && currentUser.email === values.email);
 
-  return (
+  return (    
+    <>
+    {
+    isPreloaderOpen 
+    ?
+    <Preloader /> 
+    :   
+    ( 
     <div className="profile">
-      <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+      <h1 className="profile__title">Привет, {currentUser.name}!</h1>      
       <form 
         className="profile__form" 
         name="profile-form"
@@ -78,6 +87,9 @@ function Profile({ onUpdateUser, tooltip, onSignOut }) {
         </button>
       </form>
     </div>
+    )
+    }
+    </>
   )
 }
 
