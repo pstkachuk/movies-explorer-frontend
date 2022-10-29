@@ -1,5 +1,5 @@
 .movies-card {
-  max-width: 100%;
+  width: 360px;
   min-height: 247px;
   display: flex;
   flex-direction: column;
@@ -9,9 +9,11 @@
 
 .movies-card__poster {
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   max-width: 100%;
+  max-height: 201px;
+  background-color: #2f2f2f;
 }
 
 .movies-card__description {
@@ -94,6 +96,7 @@
 @media screen and (max-width: 1024px) {
   .movies-card {
     gap: 25px;
+    width: 340px;
   }
 
   .movies-card__description {
@@ -111,6 +114,7 @@
   .movies-card {
     min-height: auto;
     gap: 18px;
+    width: 300px;
   }
 
   .movies-card__name {
