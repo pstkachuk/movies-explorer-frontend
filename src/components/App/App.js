@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -18,29 +18,56 @@ import Preloader from '../Preloader/Preloader';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState({name: 'test', email: 'ww@ww.ru', _id: "00001"});
+  const [currentUser, setCurrentUser] = useState({name: 'test', email: 'test@test.ru', _id: '001'});
   const [tooltip, setTooltip] = useState({});
   const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
   const [savedUserMovies, setSavedUserMovies] = useState([]);
   const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    checkAuth();
+  }, [])
+
+
+  //загрузить сохраненные фильмы
+  useEffect(() => {
+    if (loggedIn && currentUser) {
+      mainApi.getSavedMovies()
+      .then((data) => {
+        setSavedUserMovies(data.filter(item => item.owner === currentUser._id))
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setTooltip({
+          isShow: true,
+          message: err.message
+        })
+      })
+    }
+  }, [currentUser, loggedIn])
 
   function checkAuth() {
+    setIsPreloaderOpen(true);
     mainApi.getUserInfo()
     .then((data) => {
       if (data) {
         setLoggedIn(true);
         setCurrentUser(data);
-        history.push('/movies')
+        history.push(location.pathname)
       }
     })
     .catch((err) => {
       console.log(err.message);
+      setTooltip({
+        isShow: true,
+        message: err.message
+      })
     })
-  }
-
-  useEffect(() => {
-    checkAuth();
-  }, [])
+    .finally(() => {
+      setIsPreloaderOpen(false);
+    })
+  }  
 
   function goBack() {
     history.goBack();
@@ -67,6 +94,7 @@ function App() {
   }
 
   function handleLogin({ email, password }) {
+    setIsPreloaderOpen(true);
     mainApi.login(email, password)
     .then((res) => {
       if (res) {
@@ -82,11 +110,16 @@ function App() {
         message: err.message
       })
     })
+    .finally(() => {
+      setIsPreloaderOpen(false);
+    })
   }
 
   function handleSignOut() {
     mainApi.logout();
     setLoggedIn(false);
+    setCurrentUser({});
+    localStorage.clear();
     history.push('/');
   }
 
@@ -109,6 +142,36 @@ function App() {
     })
     .finally(() => {
       setIsPreloaderOpen(false);
+    })
+  }
+
+  //лайкнуть фильм
+  function handleSaveMovie(movie) {
+    mainApi.createMovie(movie)
+    .then((savedMovie) => {
+      setSavedUserMovies([savedMovie, ...savedUserMovies])
+    })
+    .catch((err) => {
+      console.log(err.message);
+      setTooltip({
+        isShow: true,
+        message: err.message
+      })
+    })
+  }
+
+  //удалить сохраненный фильм
+  function handleDeleteMovie(movie) {
+    mainApi.deleteMovie(movie._id)
+    .then((deletedMovie) => {
+      setSavedUserMovies(savedUserMovies.filter((item) => item._id !== movie._id))
+    })
+    .catch((err) => {
+      console.log(err.message);
+      setTooltip({
+        isShow: true,
+        message: err.message
+      })
     })
   }
 
@@ -152,6 +215,9 @@ function App() {
               isPreloaderOpen={isPreloaderOpen}
               setTooltip={setTooltip}
               tooltip={tooltip}
+              onSaveMovie={handleSaveMovie}
+              onDeleteMovie={handleDeleteMovie}
+              savedUserMovies={savedUserMovies}
             />
 
             <ProtectedRoute 
@@ -159,6 +225,11 @@ function App() {
               path="/saved-movies"
               component={SavedMovies}
               loggedIn={loggedIn}
+              savedUserMovies={savedUserMovies}
+              onDeleteMovie={handleDeleteMovie}
+              tooltip={tooltip}
+              setTooltip={setTooltip}
+              isPreloaderOpen={isPreloaderOpen}
             />
 
             <ProtectedRoute 

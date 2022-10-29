@@ -1,6 +1,6 @@
 import './Preloader.css';
 
-function Preloader({ isOpen }) {
+function Preloader() {
   return (
     <div className="preloader">
       <div className="preloader__container">

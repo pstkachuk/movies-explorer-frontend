@@ -1,22 +1,30 @@
 import './MoviesCard.css';
-import moviePoster from '../../images/poster.jpg';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function MoviesCard() {
-  const [isSaved, setIsSaved] = useState(false);
+function MoviesCard({ movie, onSaveMovie, isSaved, onDeleteMovie }) {
   const location = useLocation();
+  // const currentUser = useContext(CurrentUserContext);  
+
+  function handleSaveMovie() {    
+    onSaveMovie(movie);
+  }
+
+  function handleDeleteMovie() {
+    onDeleteMovie(movie);
+  }
 
   return (
     <div className="movies-card">
       <img 
         className="movies-card__poster" 
         alt="постер к фильму"
-        src={ moviePoster }
+        src={movie.image}
       />
       <div className="movies-card__description">
-        <h2 className="movies-card__name">Gimme Danger: История Игги и The Stooges</h2>
-        <span className="movies-card__duration">1ч 17м</span>
+        <h2 className="movies-card__name">{movie.nameRU}</h2>
+        <span className="movies-card__duration">{movie.duration}</span>
       </div>
 
       {
@@ -24,9 +32,20 @@ function MoviesCard() {
         && (
           isSaved
           ?
-          <button className="movies-card__button movies-card__save-button_saved" type="button"></button>
+          <button 
+            className="movies-card__button movies-card__save-button_saved" 
+            type="button"
+            onClick={handleDeleteMovie}
+          >
+          </button>
           :
-          <button className="movies-card__button movies-card__save-button" type="button">Сохранить</button>
+          <button 
+            className="movies-card__button movies-card__save-button" 
+            type="button"
+            onClick={handleSaveMovie}
+          >
+            Сохранить
+          </button>
         )        
       }
 
@@ -34,7 +53,12 @@ function MoviesCard() {
         location.pathname === "/saved-movies"
         &&
         (
-          <button className="movies-card__button movies-card__delete-button" type="button"></button>
+          <button 
+            className="movies-card__button movies-card__delete-button" 
+            type="button"
+            onClick={handleDeleteMovie}
+          >
+          </button>
         )
       }
 

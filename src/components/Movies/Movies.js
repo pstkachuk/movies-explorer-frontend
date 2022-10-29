@@ -7,8 +7,9 @@ import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import TooltipMessage from '../TooltipMessage/TooltipMessage';
 import { getFilteredMovies, getShortMovies } from '../../utils/utils';
+import { fixMoviesFields } from '../../utils/utils.js';
 
-function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, tooltip }) {
+function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDeleteMovie, savedUserMovies, onSaveMovie }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [allMovies, setAllMovies] = useState([]); //все фильмы с сервиса
@@ -17,6 +18,9 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованые фильмы
   const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
 
+  // useEffect(() => {
+  //   console.log(filteredMovies);
+  // })
 
   function handleFilterChecked() {
     setIsShortMoviesChecked(!isShortMoviesChecked);
@@ -38,7 +42,7 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
       moviesApi.getMovies()
       .then((data) => {
         setAllMovies(data);
-        searchFilteredMovies(data, inputValue, isShortMoviesChecked);
+        searchFilteredMovies(fixMoviesFields(data), inputValue, isShortMoviesChecked);
       })
       .catch(() => {
         setTooltip({
@@ -47,13 +51,15 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
         })
       })
       .finally(() => setIsPreloaderOpen(false));
+    } else {
+      searchFilteredMovies(allMovies, inputValue, isShortMoviesChecked);
     }
   }
 
   //фильтрация по ключевому слову
   function searchFilteredMovies(movies, keyword, isShortMovie) {
-    const filteredMovies = getFilteredMovies(movies, keyword, isShortMovie);
-    if (filteredMovies.length === 0) {
+    const filteredSearchedMovies = getFilteredMovies(movies, keyword, isShortMovie);
+    if (filteredSearchedMovies.length === 0) {
       setTooltip({
         isShow: true,
         message: 'Ничего не найдено'
@@ -62,9 +68,9 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
     } else {
       setIsMoviesFound(false);
     }
-    setInitialMovies(filteredMovies);
-    setFilteredMovies(isShortMovie ? getShortMovies(filteredMovies) : filteredMovies);
-    localStorage.setItem('movies', JSON.stringify(filteredMovies));
+    setInitialMovies(filteredSearchedMovies);
+    setFilteredMovies(isShortMovie ? getShortMovies(filteredSearchedMovies) : filteredSearchedMovies);
+    localStorage.setItem('movies', JSON.stringify(filteredSearchedMovies));
   }
 
   useEffect(() => {
@@ -91,27 +97,30 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, loggedIn, too
 
   return (
     <>
-    {
-    isPreloaderOpen
-    ?
-    <Preloader />
-    :
-    (
-      <div className="movies">
-        <SearchForm 
-          handleSearch={handleSearch} 
-          handleFilterChecked={handleFilterChecked}
-          isShortMoviesChecked={isShortMoviesChecked}
-        />
-        {!isMoviesFound && (
-          <MoviesCardList 
-            filteredMovies={filteredMovies}
+      {
+      isPreloaderOpen
+      ?
+      <Preloader />
+      :
+      (
+        <div className="movies">
+          <SearchForm 
+            handleSearch={handleSearch} 
+            handleFilterChecked={handleFilterChecked}
+            isShortMoviesChecked={isShortMoviesChecked}
           />
-        )}      
-        <TooltipMessage tooltip={tooltip}/>
-      </div>
-    )
-    }
+          {!isMoviesFound && (
+            <MoviesCardList 
+              filteredMovies={filteredMovies}
+              onSaveMovie={onSaveMovie}
+              onDeleteMovie={onDeleteMovie}
+              savedUserMovies={savedUserMovies}
+            />
+          )}      
+          <TooltipMessage tooltip={tooltip}/>
+        </div>
+      )
+      }
     </>
   )
 }

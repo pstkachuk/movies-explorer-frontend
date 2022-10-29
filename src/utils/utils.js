@@ -23,8 +23,30 @@ function getShortMovies(movies) {
   return movies.filter((movie) => movie.duration < 40);
 }
 
+function checkSavedMovie(movies, movie) {
+  return movies.find((item) => {
+    return item.movieId === movie.movieId;
+  })
+}
+
+function fixMoviesFields(movies) {
+  movies.forEach(movie => {
+    if (!movie.image) {
+      movie.image = movie.image.url;
+      movie.thumbnail = movie.image.formats.thumbnail.url;
+    } else {
+      movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`;
+      movie.image = `https://api.nomoreparties.co${movie.image.url}`;
+    }
+    
+  });
+  return movies
+}
+
 
 export {
   getFilteredMovies,
-  getShortMovies
+  getShortMovies,
+  fixMoviesFields,
+  checkSavedMovie
 }

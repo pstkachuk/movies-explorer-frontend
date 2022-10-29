@@ -120,7 +120,7 @@ export class MainApi {
           nameRU: data.nameRU,
           nameEN: data.nameEN,
           thumbnail: data.thumbnail,
-          movieId: data.movieId,
+          movieId: data.id,
         })
       }
     )
