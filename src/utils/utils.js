@@ -25,7 +25,7 @@ function getShortMovies(movies) {
 
 function checkSavedMovie(movies, movie) {
   return movies.find((item) => {
-    return item.movieId === movie.movieId;
+    return item.movieId === movie.id;
   })
 }
 

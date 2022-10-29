@@ -162,7 +162,8 @@ function App() {
 
   //удалить сохраненный фильм
   function handleDeleteMovie(movie) {
-    mainApi.deleteMovie(movie._id)
+    const deletedMovie = savedUserMovies.find((item) => item.movieId === movie.movieId || item.id === movie.movieId);    
+    mainApi.deleteMovie(deletedMovie._id)
     .then((deletedMovie) => {
       setSavedUserMovies(savedUserMovies.filter((item) => item._id !== movie._id))
     })
