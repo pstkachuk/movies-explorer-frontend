@@ -1,12 +1,15 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { checkSavedMovie } from '../../utils/utils.js';
 
 function MoviesCardList({ onSaveMovie, filteredMovies, onDeleteMovie, savedUserMovies }) {
   const location = useLocation();
   
+  useEffect(() => {
+
+  }, [savedUserMovies])
 
   return (
     <section className="movies-cards-list">
@@ -14,7 +17,7 @@ function MoviesCardList({ onSaveMovie, filteredMovies, onDeleteMovie, savedUserM
        {
         filteredMovies.map((movie) => (
           <MoviesCard 
-            key={movie._id}
+            key={movie.id}
             movie={movie}
             onSaveMovie={onSaveMovie}
             onDeleteMovie={onDeleteMovie}

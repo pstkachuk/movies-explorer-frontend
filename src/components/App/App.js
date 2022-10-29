@@ -162,10 +162,17 @@ function App() {
 
   //удалить сохраненный фильм
   function handleDeleteMovie(movie) {
-    const deletedMovie = savedUserMovies.find((item) => item.movieId === movie.movieId || item.id === movie.movieId);    
+    const deletedMovie = savedUserMovies.find((item) => item.movieId === movie.id || item.movieId === movie.movieId);    
     mainApi.deleteMovie(deletedMovie._id)
     .then((deletedMovie) => {
-      setSavedUserMovies(savedUserMovies.filter((item) => item._id !== movie._id))
+      const moviesList = savedUserMovies.filter(item => {
+        if (movie.id === item.movieId || movie.movieId === item.movieId) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+      setSavedUserMovies(moviesList);
     })
     .catch((err) => {
       console.log(err.message);
