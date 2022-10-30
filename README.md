@@ -29,3 +29,6 @@ https://sfd.movies.nomorepartiesxyz.ru/
 
 Макет приложения:
 https://www.figma.com/file/2ofHcneBwSJ4qcwSl8ZOjB/Diploma-(Copy)?node-id=999%3A6564
+
+Пул-реквест:
+https://github.com/pstkachuk/movies-explorer-frontend/pull/2
