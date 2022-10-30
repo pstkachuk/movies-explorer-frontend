@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+// import isEmail from "validator/lib/isemail";
+import isEmail from "validator/lib/isEmail";
 
 //хук управления формой и валидации формы
 export function useFormWithValidation() {
@@ -10,6 +12,15 @@ export function useFormWithValidation() {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+
+    if (name === 'email') {
+      if (!isEmail(value)) {
+          target.setCustomValidity('Введён некорректый адрес');
+      } else {
+          target.setCustomValidity('');
+      }
+    }
+
     setValues({...values, [name]: value});
     setErrors({...errors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
