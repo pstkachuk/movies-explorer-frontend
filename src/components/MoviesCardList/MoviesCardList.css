@@ -34,7 +34,7 @@
 
 @media screen and (max-width: 1024px) {
   .movies-cards-list__cards {
-    gap: 31px 30px;
+    gap: 31px 20px;
     padding-bottom: 45px;
     grid-template-columns: repeat(auto-fit, 340px);
   }

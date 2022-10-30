@@ -1,11 +1,17 @@
 import './MoviesCard.css';
-import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function MoviesCard({ movie, onSaveMovie, isSaved, onDeleteMovie }) {
   const location = useLocation();
-  // const currentUser = useContext(CurrentUserContext);  
+
+  const duration = (duration) => {
+    const hours = Math.floor(duration / 60);
+    const minutes = Math.floor(duration % 60);
+    if (hours) {
+      return `${hours}ч ${minutes}м`
+    }
+    return `${minutes}м`
+  }
 
   function handleSaveMovie() {    
     onSaveMovie(movie);
@@ -27,11 +33,12 @@ function MoviesCard({ movie, onSaveMovie, isSaved, onDeleteMovie }) {
           className="movies-card__poster" 
           alt="постер к фильму"
           src={movie.image}
+          title={movie.description}
         />
       </a>
       <div className="movies-card__description">
         <h2 className="movies-card__name">{movie.nameRU}</h2>
-        <span className="movies-card__duration">{movie.duration}</span>
+        <span className="movies-card__duration">{duration(movie.duration)}</span>
       </div>
 
       {
