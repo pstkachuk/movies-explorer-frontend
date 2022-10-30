@@ -8,9 +8,7 @@ import { useLocation } from 'react-router-dom';
 function SearchForm({ handleSearch, handleFilterChecked, isShortMoviesChecked }) {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
-
   const [errorMessage, setErrorMessage] = useState('');
-
   const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
 
   function handleSubmit(evt) {

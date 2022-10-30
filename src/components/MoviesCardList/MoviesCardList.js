@@ -13,7 +13,7 @@ function MoviesCardList({ onSaveMovie, filteredMovies, onDeleteMovie, savedUserM
 
   useEffect(() => {
     setNewMoviesCount();
-  }, [maxMoviesToShow])
+  }, [maxMoviesToShow, setNewMoviesCount])
 
   useEffect(() => {
     window.addEventListener('resize', function() {
@@ -27,7 +27,7 @@ function MoviesCardList({ onSaveMovie, filteredMovies, onDeleteMovie, savedUserM
   })
 
   useEffect(() => {
-    setScreenWidth(window.innerWidth);
+    setScreenWidth(window.innerWidth);    
     if (location.pathname === '/saved-movies') {
       setMaxMoviesToShow(999);
     } else {

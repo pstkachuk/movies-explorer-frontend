@@ -11,7 +11,10 @@ function TooltipMessage({ tooltip }) {
 
   return (
     <div className={
-       `tooltip ${ location.pathname === "/profile" && "tooltip_profile" } ${ (location.pathname === ("/movies") || location.pathname === ("/saved-movies")) && "tooltip_movies" } ${ tooltip.isShow && "tooltip_show" } ` 
+       `tooltip 
+       ${ location.pathname === "/profile" && "tooltip_profile" } 
+       ${ (location.pathname === ("/movies") || location.pathname === ("/saved-movies")) && "tooltip_movies" } 
+       ${ tooltip.isShow && "tooltip_show" } ` 
        }>
       { tooltip.message }
     </div>

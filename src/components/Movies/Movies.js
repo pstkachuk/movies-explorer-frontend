@@ -18,10 +18,6 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDe
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованые фильмы
   const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(filteredMovies);
-  // })
-
   function handleFilterChecked() {
     setIsShortMoviesChecked(!isShortMoviesChecked);
     if (!isShortMoviesChecked) {

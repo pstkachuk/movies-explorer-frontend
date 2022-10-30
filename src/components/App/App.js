@@ -11,14 +11,12 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import mainApi from '../../utils/MainApi';
-import moviesApi from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-import Preloader from '../Preloader/Preloader';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState({name: 'test', email: 'test@test.ru', _id: '001'});
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
   const [tooltip, setTooltip] = useState({});
   const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
   const [savedUserMovies, setSavedUserMovies] = useState([]);

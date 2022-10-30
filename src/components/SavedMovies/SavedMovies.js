@@ -32,16 +32,7 @@ function SavedMovies({ isPreloaderOpen, tooltip, setTooltip, savedUserMovies, on
   }
 
   function handleFilterChecked() {
-    if (isShortMoviesChecked) {
-      setIsShortMoviesChecked(false);
-      localStorage.setItem('savedShortMovies', false);
-      if (filteredMovies.length === 0) {
-        setIsMoviesFound(true);
-      } else {
-        setIsMoviesFound(false);
-      }
-      setRenderedMovies(filteredMovies);
-    } else {
+    if (!isShortMoviesChecked) {
       setIsShortMoviesChecked(true);
       localStorage.setItem('savedShortMovies', true);
       setRenderedMovies(getShortMovies(filteredMovies));
@@ -50,6 +41,15 @@ function SavedMovies({ isPreloaderOpen, tooltip, setTooltip, savedUserMovies, on
       } else {
         setIsMoviesFound(false);
       }
+    } else {
+      setIsShortMoviesChecked(false);
+      localStorage.setItem('savedShortMovies', false);      
+      if (filteredMovies.length === 0) {
+        setIsMoviesFound(true);
+      } else {
+        setIsMoviesFound(false);
+      }
+      setRenderedMovies(filteredMovies);
     }
   }
 
