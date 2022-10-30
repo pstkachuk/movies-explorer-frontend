@@ -17,11 +17,11 @@ function MoviesCardList({ onSaveMovie, filteredMovies, onDeleteMovie, savedUserM
 
   useEffect(() => {
     window.addEventListener('resize', function() {
-      setTimeout(setScreenWidth(window.innerWidth), 1000);
+      setTimeout(setScreenWidth(window.innerWidth), 500);
     });
     return () => {
       window.removeEventListener('resize', function() {
-        setTimeout(setScreenWidth(window.innerWidth), 1000);
+        setTimeout(setScreenWidth(window.innerWidth), 500);
       });
     }
   })
