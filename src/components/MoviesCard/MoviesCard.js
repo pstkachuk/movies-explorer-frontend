@@ -17,11 +17,18 @@ function MoviesCard({ movie, onSaveMovie, isSaved, onDeleteMovie }) {
 
   return (
     <div className="movies-card">
-      <img 
-        className="movies-card__poster" 
-        alt="постер к фильму"
-        src={movie.image}
-      />
+      <a 
+        className="movies-card__link"
+        target="_blank"
+        rel="noreferrer"
+        href={movie.trailerLink}
+      >
+        <img 
+          className="movies-card__poster" 
+          alt="постер к фильму"
+          src={movie.image}
+        />
+      </a>
       <div className="movies-card__description">
         <h2 className="movies-card__name">{movie.nameRU}</h2>
         <span className="movies-card__duration">{movie.duration}</span>
