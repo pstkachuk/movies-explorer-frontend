@@ -54,6 +54,13 @@ function SavedMovies({ isPreloaderOpen, tooltip, setTooltip, savedUserMovies, on
   }
 
   useEffect(() => {
+    setTooltip({
+      isShow: false,
+      message: ''
+    })
+  }, [])
+
+  useEffect(() => {
     if (localStorage.getItem('savedShortMovies') === 'true') {
       setIsShortMoviesChecked(true);
       setRenderedMovies(getShortMovies(savedUserMovies))

@@ -22,3 +22,7 @@
 .tooltip_show {
   display: block;
 }
+
+.tooltip_message {
+  color: #3DDC84;
+}

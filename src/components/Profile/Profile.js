@@ -6,7 +6,7 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import Preloader from '../Preloader/Preloader';
 
 
-function Profile({ onUpdateUser, tooltip, onSignOut, isPreloaderOpen }) {
+function Profile({ onUpdateUser, tooltip, setTooltip, onSignOut, isPreloaderOpen }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
@@ -14,6 +14,13 @@ function Profile({ onUpdateUser, tooltip, onSignOut, isPreloaderOpen }) {
     evt.preventDefault();
     onUpdateUser(values);
   }
+  
+  useEffect(() => {
+    setTooltip({
+      isShow: false,
+      message: ''
+    })
+  }, [])
   
   useEffect(() => {
     if (currentUser) {

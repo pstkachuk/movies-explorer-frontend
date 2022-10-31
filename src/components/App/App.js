@@ -39,7 +39,8 @@ function App() {
         console.log(err.message);
         setTooltip({
           isShow: true,
-          message: err.message
+          message: err.message,
+          isError: true
         })
       })
     }
@@ -59,7 +60,8 @@ function App() {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
     .finally(() => {
@@ -83,7 +85,8 @@ function App() {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
     .finally(() => {
@@ -105,7 +108,8 @@ function App() {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
     .finally(() => {
@@ -128,14 +132,16 @@ function App() {
       setCurrentUser(data)
       setTooltip({
         isShow: true,
-        message: "Данные обновлены"
+        message: "Данные обновлены!",
+        isError: false
       })
     })
     .catch((err) => {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
     .finally(() => {
@@ -153,7 +159,8 @@ function App() {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
   }
@@ -176,7 +183,8 @@ function App() {
       console.log(err.message);
       setTooltip({
         isShow: true,
-        message: err.message
+        message: err.message,
+        isError: true
       })
     })
   }
@@ -244,6 +252,7 @@ function App() {
               component={Profile}
               loggedIn={loggedIn}
               tooltip={tooltip}
+              setTooltip={setTooltip}
               onUpdateUser={handleUpdateUser}
               onSignOut={handleSignOut}
               isPreloaderOpen={isPreloaderOpen}
