@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -41,7 +41,8 @@ function App() {
           isShow: true,
           message: err.message,
           isError: true
-        })
+        });
+        handleSignOut();
       })
     }
   }, [currentUser, loggedIn])
@@ -62,7 +63,8 @@ function App() {
         isShow: true,
         message: err.message,
         isError: true
-      })
+      });
+      handleSignOut();
     })
     .finally(() => {
       setIsPreloaderOpen(false);
@@ -70,7 +72,7 @@ function App() {
   }  
 
   function goBack() {
-    history.goBack();
+    history.go(-2);
   }
 
   function handleRegister({ name, email, password }) {
@@ -110,7 +112,8 @@ function App() {
         isShow: true,
         message: err.message,
         isError: true
-      })
+      });
+      handleSignOut();
     })
     .finally(() => {
       setIsPreloaderOpen(false);
@@ -142,7 +145,8 @@ function App() {
         isShow: true,
         message: err.message,
         isError: true
-      })
+      });
+      handleSignOut();
     })
     .finally(() => {
       setIsPreloaderOpen(false);
@@ -161,7 +165,8 @@ function App() {
         isShow: true,
         message: err.message,
         isError: true
-      })
+      });
+      handleSignOut();
     })
   }
 
@@ -185,7 +190,8 @@ function App() {
         isShow: true,
         message: err.message,
         isError: true
-      })
+      });
+      handleSignOut();
     })
   }
 
@@ -205,19 +211,36 @@ function App() {
             </Route>      
 
             <Route path="/signup">
+              {
+              !loggedIn 
+              ?
+              (
               <Register 
-                onRegister={handleRegister} 
-                tooltip={tooltip} 
-                isPreloaderOpen={isPreloaderOpen}
-              />
+                  onRegister={handleRegister} 
+                  tooltip={tooltip} 
+                  isPreloaderOpen={isPreloaderOpen}
+                /> 
+              )
+              : 
+              (<Redirect to='/' />)
+              }
             </Route>
 
             <Route path="/signin">
-              <Login 
+              {
+                !loggedIn
+                ?
+                (
+                <Login 
                 onLogin={handleLogin} 
                 tooltip={tooltip} 
                 isPreloaderOpen={isPreloaderOpen}  
-              />
+                />
+                )
+                :
+                (<Redirect to='/' />)
+              }
+              
             </Route>
 
             <ProtectedRoute 

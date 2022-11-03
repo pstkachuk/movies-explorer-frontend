@@ -17,7 +17,7 @@ function SavedMovies({ isPreloaderOpen, tooltip, setTooltip, savedUserMovies, on
 
 
   function handleSearch(inputValue) {
-    const movies = getFilteredMovies(savedUserMovies, inputValue, isShortMoviesChecked)
+    const movies = getFilteredMovies(savedUserMovies, inputValue)
     if (movies.length === 0) {
       setIsMoviesFound(true);
       setTooltip({

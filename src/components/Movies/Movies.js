@@ -16,14 +16,7 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDe
   const [isMoviesFound, setIsMoviesFound] = useState(false); //фильмы не найдены
   const [initialMovies, setInitialMovies] = useState([]); //фильмы, найденые по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованые фильмы
-  const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
-
-  useEffect(() => {
-    setTooltip({
-      isShow: false,
-      message: ''
-    })
-  }, [])
+  const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);  
 
   function handleFilterChecked() {
     setIsShortMoviesChecked(!isShortMoviesChecked);
@@ -37,6 +30,11 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDe
 
   //поиск фильмов
   function handleSearch(inputValue) {
+    setTooltip({
+      isShow: false,
+      message: ''
+    })
+
     localStorage.setItem('inputValue', inputValue);
     localStorage.setItem('shortMovies', isShortMoviesChecked);
 
@@ -61,7 +59,7 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDe
 
   //фильтрация по ключевому слову
   function searchFilteredMovies(movies, keyword, isShortMovie) {
-    const filteredSearchedMovies = getFilteredMovies(movies, keyword, isShortMovie);
+    const filteredSearchedMovies = getFilteredMovies(movies, keyword);
     if (filteredSearchedMovies.length === 0) {
       setTooltip({
         isShow: true,
@@ -76,27 +74,43 @@ function Movies({ setTooltip, setIsPreloaderOpen, isPreloaderOpen, tooltip, onDe
     localStorage.setItem('movies', JSON.stringify(filteredSearchedMovies));
   }
 
-  useEffect(() => {
-    if (localStorage.getItem('shortMovies') === 'true') {
-      setIsShortMoviesChecked(true);
-    } else {
-      setIsShortMoviesChecked(false);
-    }
-  }, [currentUser]);
-  
-  //загрузка фильмов из локального хранилища
+  //отображение найденых фильмов с учётом фильтра поиска
   useEffect(() => {
     if (localStorage.getItem('movies')) {
       const movies = JSON.parse(localStorage.getItem('movies'))
       setInitialMovies(movies);
-      if (localStorage.getItem('shortMovies' === 'true')) {
+
+      if (localStorage.getItem('shortMovies') === 'true') {
+        setIsShortMoviesChecked(true);
         setFilteredMovies(getShortMovies(movies))
       } else {
+        setIsShortMoviesChecked(false);
         setFilteredMovies(movies)
       }
-    }
+    }    
   }, [currentUser]);
 
+  //сброс ошибки
+  useEffect(() => {
+    setTooltip({
+      isShow: false,
+      message: ''
+    })
+  }, [])
+
+  //все фильмы, полученные с сервиса, сохраняются в localstorage для того, чтобы запрос к сервису осуществлялся только единожды при первом поиске
+  useEffect(() => {
+    if (allMovies.length === 0 && localStorage.getItem('allMovies')) {
+      setAllMovies(JSON.parse(localStorage.getItem('allMovies')));
+    }
+  }, [currentUser, allMovies]);
+
+  useEffect(() => {
+    if (allMovies.length > 0 && !(localStorage.getItem('allMovies'))) {
+      localStorage.setItem('allMovies', JSON.stringify(allMovies));
+    }
+  }, [allMovies]);
+ 
 
   return (
     <>

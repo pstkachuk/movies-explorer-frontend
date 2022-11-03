@@ -26,7 +26,7 @@ function SearchForm({ handleSearch, handleFilterChecked, isShortMoviesChecked })
       setIsValid(true);
     }
   }, [currentUser])
-
+  
   return(
     <section className="search-form">
       <form 

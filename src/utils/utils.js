@@ -2,8 +2,10 @@
 //утилитарные функции для фильтрации поиска фильмов
 //
 
+import { SHORTSMOVIE_DURATION } from '../utils/const.js'
+
 //отфилтровать по ключевому слову пользователя
-function getFilteredMovies(movies, keyword, isShortMovie) {
+function getFilteredMovies(movies, keyword) {
   const filteredMovies = movies.filter((movie) => {
     const movieRu = String(movie.nameRU).toLowerCase();
     const movieEn = String(movie.nameEN).toLowerCase();
@@ -11,16 +13,12 @@ function getFilteredMovies(movies, keyword, isShortMovie) {
     return movieRu.includes(searchedMovie) || movieEn.includes(searchedMovie);
   });
 
-  if (isShortMovie) {
-    return getShortMovies(filteredMovies);
-  } else {
-    return filteredMovies;
-  }
+  return filteredMovies;
 }
 
 //отфильтровать короткометражки
 function getShortMovies(movies) {
-  return movies.filter((movie) => movie.duration < 40);
+  return movies.filter((movie) => movie.duration < SHORTSMOVIE_DURATION);
 }
 
 function checkSavedMovie(movies, movie) {

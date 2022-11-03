@@ -138,3 +138,9 @@
     height: 168px;
   }
 }
+
+@media screen and not (hover) {
+  .movies-card__button {
+    opacity: 1;
+  }
+}
