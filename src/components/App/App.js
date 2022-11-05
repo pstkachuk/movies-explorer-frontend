@@ -146,7 +146,6 @@ function App() {
         message: err.message,
         isError: true
       });
-      handleSignOut();
     })
     .finally(() => {
       setIsPreloaderOpen(false);
