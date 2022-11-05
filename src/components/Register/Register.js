@@ -6,7 +6,7 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { useEffect } from 'react';
 import Preloader from '../Preloader/Preloader';
 
-function Register({ onRegister, tooltip, isPreloaderOpen }) {
+function Register({ onRegister, tooltip, setTooltip, isPreloaderOpen }) {
   const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
   function handleSubmit(evt) {
@@ -17,6 +17,13 @@ function Register({ onRegister, tooltip, isPreloaderOpen }) {
   useEffect(() => {
     resetForm();
   }, [resetForm]);
+
+  useEffect(() => {
+    setTooltip({
+      isShow: false,
+      message: ''
+    })
+  }, [])
 
   return (
     <>

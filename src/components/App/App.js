@@ -218,6 +218,7 @@ function App() {
                   onRegister={handleRegister} 
                   tooltip={tooltip} 
                   isPreloaderOpen={isPreloaderOpen}
+                  setTooltip={setTooltip}
                 /> 
               )
               : 
@@ -233,7 +234,8 @@ function App() {
                 <Login 
                 onLogin={handleLogin} 
                 tooltip={tooltip} 
-                isPreloaderOpen={isPreloaderOpen}  
+                isPreloaderOpen={isPreloaderOpen}
+                setTooltip={setTooltip}
                 />
                 )
                 :
