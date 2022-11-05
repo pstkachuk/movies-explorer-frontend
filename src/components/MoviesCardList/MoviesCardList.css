@@ -4,7 +4,8 @@
 
 .movies-cards-list__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, 360px);
+  justify-content: center;
   gap: 43px 30px;
   box-sizing: border-box;
   padding-top: 80px;
@@ -33,8 +34,9 @@
 
 @media screen and (max-width: 1024px) {
   .movies-cards-list__cards {
-    gap: 31px 30px;
+    gap: 31px 20px;
     padding-bottom: 45px;
+    grid-template-columns: repeat(auto-fit, 340px);
   }
 }
 
@@ -43,6 +45,7 @@
     padding-top: 50px;
     gap: 35px;
     padding-bottom: 58px;
+    grid-template-columns: repeat(auto-fit, 300px);
   }
 
   .movies-cards-list {

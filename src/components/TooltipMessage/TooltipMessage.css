@@ -1,4 +1,4 @@
-.error {
+.tooltip {
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -7,13 +7,22 @@
   text-align: center;
   display: none;
   position: absolute;
-  top: 295px;
+  bottom: 90px;
 }
 
-.error_profile {
-  top: 256px;
+.tooltip_profile {
+  bottom: 130px;
 }
 
-.error_show {
+.tooltip_movies {
+  position: relative;
+  margin-top: 170px;
+}
+
+.tooltip_show {
   display: block;
+}
+
+.tooltip_message {
+  color: #3DDC84;
 }

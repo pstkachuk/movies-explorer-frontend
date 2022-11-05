@@ -42,14 +42,13 @@
 .preloader {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  justify-content: center;  
   z-index: 10;
   padding: 20px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-30%);
+  top: 45%;
+  right: 50%;
+  transform: translate(70px, -70px);
 }
 
 .preloader__container {
